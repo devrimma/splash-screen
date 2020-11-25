@@ -6,10 +6,26 @@ class MainBody extends StatefulWidget {
 }
 
 class _MainBodyState extends State<MainBody> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: Text("Главная страничка заметок")),
+      child: ListView.builder(
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          return ListTile(
+            onTap: () {
+              print(index);
+            },
+            title: Text('list'),
+            subtitle: Text("456"),
+            trailing: Icon(
+              Icons.ac_unit_outlined,
+            ),
+            isThreeLine: false,
+          );
+        },
+      ),
     );
   }
 }

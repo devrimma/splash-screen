@@ -16,6 +16,7 @@ class _MainPageState extends State<MainPage> {
         title: Text(
           "Заметки",
         ),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: Icon(

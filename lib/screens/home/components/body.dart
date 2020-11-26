@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splash_screen/data/test.dart';
 
 class MainBody extends StatefulWidget {
   @override
@@ -11,14 +12,14 @@ class _MainBodyState extends State<MainBody> {
   Widget build(BuildContext context) {
     return Container(
       child: ListView.builder(
-        itemCount: 6,
-        itemBuilder: (context, index) {
+        itemCount: TestList().list.length,
+        itemBuilder: (_, index) {
           return ListTile(
-            onTap: () {
-              print(index);
-            },
-            title: Text('list'),
-            subtitle: Text("456"),
+            subtitle: Text(
+                TestList().list[index],
+              style: TextStyle(fontSize: 70),
+            ),
+            onTap: () {print("${index+1} ${TestList().list[index]}");},
             trailing: Icon(
               Icons.ac_unit_outlined,
             ),
@@ -29,3 +30,6 @@ class _MainBodyState extends State<MainBody> {
     );
   }
 }
+// (_, index) => Text(
+// TestList().list[index],
+// style: TextStyle(fontSize: 50),

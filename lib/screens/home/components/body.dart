@@ -11,13 +11,19 @@ class _MainBodyState extends State<MainBody> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView.builder(
+      child: ListView.separated(
         itemCount: TestList().list.length,
+        separatorBuilder: (_ , __) => Divider(
+          height: 5.0,
+          thickness: 3.0,
+          color: Colors.lightBlue,
+        ),
         itemBuilder: (_, index) {
           return ListTile(
+            title: Text("1"),
             subtitle: Text(
                 TestList().list[index],
-              style: TextStyle(fontSize: 70),
+              style: TextStyle(fontSize: 31.0),
             ),
             onTap: () {print("${index+1} ${TestList().list[index]}");},
             trailing: Icon(

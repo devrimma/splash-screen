@@ -37,8 +37,8 @@ class _MainPageState extends State<MainPage> {
               print("Выход");
               GoogleAuth().logout();
               Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => AuthPage()),
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthPage()),
               );
               // SystemNavigator.pop(); - закрывает приложение
             },

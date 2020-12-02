@@ -27,14 +27,14 @@ class _AuthBodyState extends State<AuthBody> {
       });
     });
 
-    if (_user != null) {
-        Future.delayed(Duration.zero, () {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => MainPage()),
-          );
-        });
-    }
+    // if (_user != null) {
+    //     Future.delayed(Duration.zero, () {
+    //       Navigator.pushReplacement(
+    //         context,
+    //         MaterialPageRoute(builder: (context) => MainPage()),
+    //       );
+    //     });
+    // }
 
     // if (_user == null) {
     //   hasUserAuth = true;

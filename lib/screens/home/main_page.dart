@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:splash_screen/screens/auth/auth.dart';
 import 'package:splash_screen/screens/home/components/body.dart';
+import 'package:splash_screen/services/google.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -8,6 +11,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
+  User _user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +23,11 @@ class _MainPageState extends State<MainPage> {
           "Заметки",
         ),
         centerTitle: true,
-        actions: [
+        actions: <Widget>[
+          (_user != null) ? CircleAvatar(
+            backgroundImage: NetworkImage(_user.photoURL),
+            radius: 25.0,
+          ) : SizedBox(),
           IconButton(
             icon: Icon(
               Icons.exit_to_app_sharp,
@@ -25,7 +35,12 @@ class _MainPageState extends State<MainPage> {
             ),
             onPressed: () {
               print("Выход");
-              SystemNavigator.pop();
+              GoogleAuth().logout();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => AuthPage()),
+              );
+              // SystemNavigator.pop(); - закрывает приложение
             },
           ),
         ],
